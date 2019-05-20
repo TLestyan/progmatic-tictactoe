@@ -19,11 +19,10 @@ import java.util.List;
 public class BoardImpl implements Board{
     
     private static final int DEAFAULT_SIZE = 3;
-    private static final int MAX_COUNT_FOR_WIN = 5;
     
     private final Cell[][] board;
 
-    public BoardImpl(int size) {
+    private BoardImpl(int size) {
         board = new Cell[size][size];
         
         for (int row = 0; row < size; row++) {
@@ -62,62 +61,27 @@ public class BoardImpl implements Board{
     @Override
     public boolean hasWon(PlayerType p) {
         
-        int winFromCount = Math.min( Math.min( board.length, board[0].length ) , MAX_COUNT_FOR_WIN );
-        
-        // row check
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                int countP = 0;
-                if (board[row][col].getCellsPlayer() == p) {
-                    countP++;
-                    
-                    if (countP == winFromCount) {
-                        return true;
-                    }
-                    
-                } else {
-                    countP = 0;
-                }
-            }
+        if (p == PlayerType.EMPTY) {
+            return false;
         }
         
-        // collumn check
-        for (int col = 0; col < board[0].length; col++) {
-            for (int row = 0; row < board.length; row++) {
-                int countP = 0;
-                if (board[row][col].getCellsPlayer() == p) {
-                    countP++;
-                    
-                    if (countP == winFromCount) {
-                        return true;
-                    }
-                    
-                } else {
-                    countP = 0;
-                }
+        if (board[0][0].getCellsPlayer() == p
+                    && board[1][1].getCellsPlayer() == p
+                    && board[2][2].getCellsPlayer() == p
+                || board[0][2].getCellsPlayer() == p
+                    && board[1][1].getCellsPlayer() == p
+                    && board[2][0].getCellsPlayer() == p) {
+                return true;
             }
-        }
         
-        // diagonal check
-        for (int row = 0; row < board.length - winFromCount; row++) {
-            for (int col = 0; col < board[row].length - winFromCount; col++) {
-                int countP = 0;
-                int countP2 = 0;
-                
-                for (int i = 0; i < winFromCount; i++) {
-                    if (board[row + i][col + i].getCellsPlayer() == p) {
-                        countP++;
-                    } 
-                    
-                    if (board[row + (winFromCount - 1) - i][col + i].getCellsPlayer() == p) {
-                        countP2++;
-                    } 
-                }
-                
-                if (countP == winFromCount
-                        || countP2 == winFromCount) {
-                    return true;
-                }
+        for (int i = 0; i < DEAFAULT_SIZE; i++) {
+            if (board[i][0].getCellsPlayer() == p
+                    && board[i][1].getCellsPlayer() == p
+                    && board[i][2].getCellsPlayer() == p
+                || board[0][i].getCellsPlayer() == p
+                    && board[1][i].getCellsPlayer() == p
+                    && board[2][i].getCellsPlayer() == p) {
+                return true;
             }
         }
         
