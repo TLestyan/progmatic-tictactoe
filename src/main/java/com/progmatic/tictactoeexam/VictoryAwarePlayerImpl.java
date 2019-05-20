@@ -56,10 +56,10 @@ public class VictoryAwarePlayerImpl extends AbstractPlayer{
                             && b.getCell( emptyCell.getRow(), emptyCell.getCol() - (i + 1)) == myType;
                     
                 } catch (CellException e) {}
-            }
-            
-            if (isWin) {
-                return new Cell( emptyCell.getRow(), emptyCell.getCol(), myType);
+                
+                if (isWin) {
+                    return new Cell( emptyCell.getRow(), emptyCell.getCol(), myType);
+                }
             }
             
         }
