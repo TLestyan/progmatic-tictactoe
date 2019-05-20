@@ -45,6 +45,10 @@ public class VictoryAwarePlayerImpl extends AbstractPlayer{
                     isWin = b.getCell( emptyCell.getRow() - firstI, emptyCell.getCol()) == myType
                             && b.getCell( emptyCell.getRow() - (i + 1), emptyCell.getCol()) == myType;
                     
+                    if (isWin) {
+                        return new Cell( emptyCell.getRow(), emptyCell.getCol(), myType);
+                    }
+                    
                 } catch (CellException e) {}
                 
                 try {
@@ -55,11 +59,13 @@ public class VictoryAwarePlayerImpl extends AbstractPlayer{
                     isWin = b.getCell( emptyCell.getRow(), emptyCell.getCol() - firstI) == myType
                             && b.getCell( emptyCell.getRow(), emptyCell.getCol() - (i + 1)) == myType;
                     
+                    if (isWin) {
+                        return new Cell( emptyCell.getRow(), emptyCell.getCol(), myType);
+                    }
+                    
                 } catch (CellException e) {}
                 
-                if (isWin) {
-                    return new Cell( emptyCell.getRow(), emptyCell.getCol(), myType);
-                }
+                
             }
             
         }
