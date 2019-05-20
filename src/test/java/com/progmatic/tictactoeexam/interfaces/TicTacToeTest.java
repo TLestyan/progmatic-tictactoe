@@ -5,6 +5,7 @@
  */
 package com.progmatic.tictactoeexam.interfaces;
 
+import com.progmatic.tictactoeexam.BoardImpl;
 import com.progmatic.tictactoeexam.Cell;
 import com.progmatic.tictactoeexam.exceptions.CellException;
 import com.progmatic.tictactoeexam.enums.PlayerType;
@@ -273,7 +274,7 @@ public class TicTacToeTest {
     
     //TODO
     private Board getBoardImpl(){
-        return null;
+        return new BoardImpl();
     }
     
     //TODO
