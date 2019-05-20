@@ -67,10 +67,4 @@ public class VictoryAwarePlayerImpl extends AbstractPlayer{
         return new Cell( emptyCells.get(0).getRow(), emptyCells.get(0).getCol(), myType);
     }
     
-    private int indexCorrect(int i){
-        return i == -1 
-                ? i++
-                : i;
-    }
-    
 }
