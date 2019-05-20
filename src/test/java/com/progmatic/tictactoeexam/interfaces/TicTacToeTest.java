@@ -8,6 +8,7 @@ package com.progmatic.tictactoeexam.interfaces;
 import com.progmatic.tictactoeexam.BoardImpl;
 import com.progmatic.tictactoeexam.Cell;
 import com.progmatic.tictactoeexam.SimplePlayerImpl;
+import com.progmatic.tictactoeexam.VictoryAwarePlayerImpl;
 import com.progmatic.tictactoeexam.exceptions.CellException;
 import com.progmatic.tictactoeexam.enums.PlayerType;
 import java.util.List;
@@ -285,7 +286,7 @@ public class TicTacToeTest {
     
     //TODO
     private Player victoryAwarePlayerImpl(PlayerType p){
-        return null;
+        return new VictoryAwarePlayerImpl(p);
     }
 
 }
